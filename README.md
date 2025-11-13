@@ -126,7 +126,7 @@ This code solves the DC-OPF and Economic Dispatch using Julia-JuMP and HiGHS sol
 <details>
   <summary>Click to see the details</summary>
   
-  1. To modify the input data, go to the folder 📁 [`Input_Data/`](./Input_Data), and open the subfolder associated with the system you want to simulate (`2nodos` & `3nodos`):
+  1. To modify the input data, go to the folder 📁 [`Input_Data/`](./Input_Data), and open the subfolder associated with the system you want to modify (`2nodos` & `3nodos`):
        <p align="center">
         <figure style="display:inline-block; margin:10px;">
           <img src="./utils/_2bus.png" alt="2bus" width="25%">
