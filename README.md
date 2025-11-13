@@ -60,7 +60,8 @@ This code solves the DC-OPF and Economic Dispatch using Julia-JuMP and HiGHS sol
 
       - 📁 [`Functions/`](./Functions): Contains all auxiliary functions used in the simulation  
       - 📁 [`Input_Data/`](./Input_Data): Contains the input data for the case studies  
-      - 📁 [`Results/`](./Results): Contains all the output results  
+      - 📁 [`Results/`](./Results): Contains all the output results
+      - 📁 [`utils/`](./utils): Contains some figures used in this guide  
       - 📄 [`main.jl`](./main.jl): The main script to run simulations and obtain results  
       - 📄 [`Manifest.toml`](./Manifest.toml), [`Project.toml`](../Project.toml), and [`README.md`](../README.md): Auxiliary configuration and documentation files  
 
@@ -74,6 +75,18 @@ This code solves the DC-OPF and Economic Dispatch using Julia-JuMP and HiGHS sol
         <p align="center">
           <img src="./utils/Step9.png" alt="Step 9" width="50%">
         </p>
+  4. Getting inside the folder [`Results/`](./Results):
+      - Inside this folder, there are seven txt files in which the results are stored for analysis
+        <p align="center">
+          <img src="./utils/Step9.png" alt="Step 9" width="50%">
+        </p>
+      - 📄 [`1_coste_DCOPF.txt`](./Results/1_coste_DCOPF.txt): It prints the total cost obtained via DCOPF
+      - 📄 [`2_generacion_DCOPF.txt`](./Results/2_generacion_DCOPF.txt): It prints the generation dispatch obtained via DCOPF
+      - 📄 [`3_lineas_DCOPF_DCOPF.txt`](./Results/3_lineas_DCOPF.txt): It prints the line flow obtained via DCOPF
+      - 📄 [`4_duals_DCOPF.txt`](./Results/4_duals_DCOPF.txt): It prints the marginal prices for each bus obtained via DCOPF
+      - 📄 [`5_detalles_modelo_DCOPF.txt`](./Results/5_detalles_modelo_DCOPF.txt): It prints the DCOPF model created via Julia-JuMP
+      - 📄 [`6_solucion_DE.txt`](./Results/6_solucion_DE.txt): It prints the results obtained via Economic Dispatch
+      - 📄 [`7_solucion_DE.txt`](./Results/7_solucion_DE.txt): It prints the results obtained via Unit Commitment
 </details>
 
 **5. 🗂️ :**
