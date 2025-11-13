@@ -7,21 +7,21 @@ function Read_Input_Data(folder_path::String)
 
     # === Functions to convert raw tuples/vectors into DataFrames ================================
 
-    function read_bus_data(nodo, tipo_nodo, potencia_carga)
+    function read_bus_data(nodo, potencia_carga)
         df_bus = DataFrame(
             bus = Int64.(nodo),
-            type = Int64.(tipo_nodo),
             p_d = Float64.(potencia_carga),
         )
         return df_bus
     end
 
-    function read_gen_data(generador, maxima_potencia, custo)
+    function read_gen_data(generador, minima_potencia, maxima_potencia, coste)
         df_gen = DataFrame(
             id = Int64.(generador),
             bus = Int64.(generador),  # same as ID
+            pg_min = Float64.(minima_potencia),
             pg_max = Float64.(maxima_potencia),
-            g_cost = Float64.(custo),
+            g_cost = Float64.(coste),
         )
         return df_gen
     end
@@ -45,13 +45,13 @@ function Read_Input_Data(folder_path::String)
     Base.eval(mod, :(using DataFrames))
 
     # Call the functions inside the included module safely
-    nodo, tipo_nodo, potencia_carga = Base.invokelatest(() -> getfield(mod, :nodos)())
-    generador, maxima_potencia, custo = Base.invokelatest(() -> getfield(mod, :generadores)())
+    nodo, potencia_carga = Base.invokelatest(() -> getfield(mod, :nodos)())
+    generador, minima_potencia, maxima_potencia, coste = Base.invokelatest(() -> getfield(mod, :generadores)())
     linea, de_nodo, para_nodo, susceptancia, maxima_potencia_linea = Base.invokelatest(() -> getfield(mod, :lineas)())
 
     # Convert to DataFrames
-    DBUS = read_bus_data(nodo, tipo_nodo, potencia_carga)
-    DGEN = read_gen_data(generador, maxima_potencia, custo)
+    DBUS = read_bus_data(nodo, potencia_carga)
+    DGEN = read_gen_data(generador, minima_potencia, maxima_potencia, coste)
     DCIR = read_circuit_data(linea, de_nodo, para_nodo, susceptancia, maxima_potencia_linea)
 
     # ==============================================================================================

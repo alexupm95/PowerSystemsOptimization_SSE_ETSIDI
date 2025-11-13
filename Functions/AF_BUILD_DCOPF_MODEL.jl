@@ -18,15 +18,15 @@ function Make_DCOPF_Model!(model::Model,
     #---------------------------------------------
     P_d  = deepcopy(DBUS.p_d) ./ base_MVA  # Active power demanded by the loads     [p.u.]
 
-    #------------------------------------------
-    # Check if there is at least one swing bus
-    #------------------------------------------
-    SW = findall(x -> x == 3, DBUS.type)
-    if isempty(SW) 
-        throw(ArgumentError("You must define one bus as the SLACK BUS (type 3).")) 
-    elseif length(SW) > 1 
-        throw(ArgumentError("This code still does not support more than one SLACK BUS (type 3).")) 
-    end
+    # #------------------------------------------
+    # # Check if there is at least one swing bus
+    # #------------------------------------------
+    # SW = findall(x -> x == 3, DBUS.type)
+    # if isempty(SW) 
+    #     throw(ArgumentError("You must define one bus as the SLACK BUS (type 3).")) 
+    # elseif length(SW) > 1 
+    #     throw(ArgumentError("This code still does not support more than one SLACK BUS (type 3).")) 
+    # end
 
     # Define the voltage at each bus equal to 1 p.u.
     V = OrderedDict(bus => 1.0 for bus in eachindex(DBUS.bus))
@@ -57,7 +57,7 @@ function Make_DCOPF_Model!(model::Model,
     P_g = OrderedDict{Int, JuMP.VariableRef}()
     for gen in 1:nGEN # Loop in all generators
         P_g[gen] = @variable(model,
-            lower_bound = 0.0, # Lower Bounds
+            lower_bound = DGEN.pg_min[gen] / base_MVA, # Lower Bounds
             upper_bound = DGEN.pg_max[gen] / base_MVA, # Upper Bounds
             base_name = "P_g[$gen]"
         )
@@ -86,12 +86,13 @@ function Make_DCOPF_Model!(model::Model,
     # Equality Constraint -> angle of swing bus
     # ******************************************
     eq_const_angle_sw = OrderedDict{Int, JuMP.ConstraintRef}()
+    eq_const_angle_sw = JuMP.@constraint(model, θ[1] == 0.0)   # Set the constraint -> Angle == 0
 
-    if any(bus_gen_circ_dict[SW[1]][:gen_status] .== 1)                          # First check if the swing bus has at least one generator connected to it
-        eq_const_angle_sw = JuMP.@constraint(model, θ[DBUS.bus[SW[1]]] == 0.0)   # Set the constraint -> Angle == 0
-    else
-        throw(ArgumentError("Swing bus $(SW[1]) must have at least one connected generator with status ON.")) # Throw an error if the swing bus has no generator connected to it
-    end
+    # if any(bus_gen_circ_dict[SW[1]][:gen_status] .== 1)                          # First check if the swing bus has at least one generator connected to it
+    #     eq_const_angle_sw = JuMP.@constraint(model, θ[DBUS.bus[SW[1]]] == 0.0)   # Set the constraint -> Angle == 0
+    # else
+    #     throw(ArgumentError("Swing bus $(SW[1]) must have at least one connected generator with status ON.")) # Throw an error if the swing bus has no generator connected to it
+    # end
    
     # ********************************************
     # Equality Constraints -> Active Power Balance

@@ -1,0 +1,15 @@
+
+##########################################
+
+SOLUCIÓN:
+
+COSTE TOTAL: 4600.0 €
+
+COMMITMENT GENERADOR:
+  - Generador 1: ON
+  - Generador 2: ON
+
+POTENCIA GENERADA:
+  - Generador 1: 200.0 MW
+  - Generador 2: 20.0 MW
+

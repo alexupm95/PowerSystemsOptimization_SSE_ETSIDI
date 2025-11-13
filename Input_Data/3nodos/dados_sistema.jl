@@ -2,28 +2,28 @@
 #                        VARIABLES DE NODO
 # =====================================================================
 # nodo -----------> Numero de identificación del nodo
-# tipo_nodo ------> Tipo del nodo: (3 = SW), (2 = PV) or (1 = PQ) 
 # potencia_carga -> Potencia demandada por la carga (MW)
 function nodos()
     nodo = [1; 2; 3] 
-    tipo_nodo = [3; 2; 2] 
     potencia_carga = [0; 60; 60]
 
-    return nodo, tipo_nodo, potencia_carga
+    return nodo, potencia_carga
 end
 
 # =====================================================================
 #                    VARIABLES DE GENERACIÓN
 # =====================================================================
 # generador -------> Numero de identificación del generador
+# minima_potencia -> Minima potencia generada (MW)
 # maxima_potencia -> Maxima potencia generada (MW)
-# custo -----------> Custo de generación (€/MW)
+# coste -----------> Coste de generación (€/MW)
 function generadores()
     generador = [1; 2; 3] 
+    minima_potencia = [10; 10; 10]
     maxima_potencia = [150; 100; 50]
-    custo = [25; 15; 30]
+    coste = [25; 15; 30]
 
-    return generador, maxima_potencia, custo
+    return generador, minima_potencia, maxima_potencia, coste
 end
 
 

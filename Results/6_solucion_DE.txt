@@ -1,0 +1,12 @@
+
+##########################################
+
+SOLUCIÓN:
+
+COSTE TOTAL: 4600.0 €
+
+POTENCIA GENERADA:
+  - Generador 1: 200.0 MW
+  - Generador 2: 20.0 MW
+
+PRECIO DE LA ENERGIA: 30.0 €/MWh

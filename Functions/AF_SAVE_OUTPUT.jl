@@ -18,7 +18,7 @@ function Export_DCOPF_Model(model::Model,
     # Desired key order to print the variables
     vector_dict_var = [θ, P_g]
 
-    open("model_details.txt", "w") do io
+    open("5_detalles_modelo_DCOPF.txt", "w") do io
 
         # Print the model to the file
         show(io, model)
@@ -137,7 +137,7 @@ function Save_Solution_Model(model::Model,
     )
 
     println("===================================================")
-    println("Objective Function: € "*string(round(JuMP.value.(model.ext[:objective]), digits=2))*"")
+    println("Coste Total: "*string(round(JuMP.value.(model.ext[:objective]), digits=2))*" €")
     println("===================================================")
 
     V_optim = [data for (_, data) in V] # Only to convert from Dict to vector (all elements are equal to 1 p.u.)
@@ -304,16 +304,16 @@ function Save_ResultsTXT_DCOPF(path_folder_results::String, RBUS::DataFrame, nBU
     sum_Pg = 0.0
     sum_Pd = 0.0
 
-    io = open("1_cost.txt", "w")
-    @printf(io, "OBJECTIVE\n")
+    io = open("1_coste_DCOPF.txt", "w")
+    # @printf(io, "OBJECTIVO\n")
     @printf(io, "================================ \n")
-    @printf(io, "Custo Total: (Euros) %8.2f \n", round(objective, digits = 2))
+    @printf(io, "Coste Total: %8.2f €\n", round(objective, digits = 2))
     @printf(io, "================================ \n")
     close(io)
 
-    io = open("2_generation.txt", "w")
+    io = open("2_generacion_DCOPF.txt", "w")
     @printf(io, "============================================== \n")
-    @printf(io, "   NUDO    PG (MW)     PD (MW)    θ (degrees)    \n")
+    @printf(io, "   NODO    PG (MW)     PD (MW)    θ (degrees)    \n")
     @printf(io, "--------------------------------------------- \n")
     for i = 1:nBUS
         @printf(io, " %4d    %8.2f    %8.2f    %6.2f \n", RBUS.bus[i], RBUS.p_g[i], RBUS.p_d[i], RBUS.θ[i])
@@ -326,7 +326,7 @@ function Save_ResultsTXT_DCOPF(path_folder_results::String, RBUS::DataFrame, nBU
     @printf(io, "\n")
     close(io)
     
-    io = open("3_lineas.txt", "w")
+    io = open("3_lineas_DCOPF.txt", "w")
     @printf(io, "======================= \n")
     @printf(io, "  LÍNEA    POTENCIA (MW)\n")
     @printf(io, "------------------------ \n")
@@ -384,13 +384,13 @@ function Save_Duals_DCOPF_Model(model::Model,
     dual_UB_Pg = [JuMP.dual(UpperBoundRef(info)) for (i, info) in P_g] ./ base_MVA
 
     # ========== WRITE TO TXT FILE ==========
-    open("4_duals.txt", "w") do io
+    open("4_duals_DCOPF.txt", "w") do io
         function write_dual_power_nudo(io, name, vec)
             println(io, "=======================")
             println(io, " $name:")
             println(io, "=======================")
             for (i, val) in enumerate(vec)
-                println(io, "[$i] =\t €/MW $val")
+                println(io, "[$i] = $val €/MW")
             end
             println(io)  # empty line between sections
         end
@@ -400,7 +400,7 @@ function Save_Duals_DCOPF_Model(model::Model,
             println(io, " $name:")
             println(io, "==================================")
             for (i, val) in enumerate(vec)
-                println(io, "[$i] =\t €/MW $val")
+                println(io, "[$i] = $val €/MW")
             end
             println(io)  # empty line between sections
         end
@@ -416,7 +416,7 @@ function Save_Duals_DCOPF_Model(model::Model,
         end
 
         # write_dual_others(io, "Dual Angle Swing Bus",     dual_θ_SW)
-        write_dual_power_nudo(io, "Precio por Nudo", dual_P_balance)
+        write_dual_power_nudo(io, "Precio por Nodo", dual_P_balance)
         # write_dual_power_linea(io, "Precio de Congestión de la Línea", dual_p_ik)
 
         # write_dual_others(io,  "Dual Lower Bound θ", dual_LB_θ)
