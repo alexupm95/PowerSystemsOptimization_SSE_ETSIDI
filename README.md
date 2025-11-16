@@ -1,11 +1,11 @@
-# ECONOMIC DISPATCH, UNIT COMMITMENT, and DC-OPF in Julia-JuMP
-This code uses the Julia-JuMP and HiGHS solver to solve simple versions of the Economic Dispatch, Unit Commitment and DC-OPF problems.
+# Power Systems Optimization in Julia-JuMP
+This code uses the programming language Julia-JuMP and the HiGHS solver to solve simple versions of the Economic Dispatch, Unit Commitment and DC-OPF problems.
 
-## 👨🏽‍💻 Running the Code Online (direct on the web)
+## 👨🏽‍💻 Running the code online (direct on the web)
 
 **1. 💻 Open the website https://mybinder.org/:**
 
-**2. 🚀 Build and Launch the Repository:**  
+**2. 🚀 Build and launch the repository:**  
 <details>
   <summary>Click to see the details</summary>
 
@@ -25,7 +25,7 @@ This code uses the Julia-JuMP and HiGHS solver to solve simple versions of the E
 
 </details>
 
-**3. 👨🏽‍💻 Run the Code:**  
+**3. 👨🏽‍💻 Run the code:**  
 <details>
   <summary>Click to see the details</summary>
 
@@ -41,7 +41,7 @@ This code uses the Julia-JuMP and HiGHS solver to solve simple versions of the E
       <p align="center">
         <img src="./utils/Step6.png" alt="Step 6" width="50%">
       </p>
-  4. To run the code, in the Julia Terminal type `include("main.jl")` and then press **Enter**
+  4. To run the code, type in the Julia Terminal `include("main.jl")` and then press **Enter**
       <p align="center">
         <img src="./utils/Step7.png" alt="Step 7" width="50%">
       </p>
