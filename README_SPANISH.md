@@ -116,7 +116,7 @@ Este código usa el lenguaje de programación Julia-JuMP y el solver HiGHS para 
         <p align="center">
           <img src="./utils/Step21.png" alt="Paso 21" width="50%">
         </p>
-      - 📄 [`7_solucion_DE.txt`](./Results/7_solucion_DE.txt): Muestra los resultados obtenidos mediante Compromiso de Generación
+      - 📄 [`7_solucion_DE.txt`](./Results/7_solucion_DE.txt): Muestra los resultados obtenidos mediante Encendido de Generación ("Unit Commitment")
         <p align="center">
           <img src="./utils/Step22.png" alt="Paso 22" width="50%">
         </p>
@@ -222,7 +222,7 @@ Este código usa el lenguaje de programación Julia-JuMP y el solver HiGHS para 
 
   3. Para elegir el tipo de simulación, establece la variable `simulacion` a una de las siguientes opciones:
      - `DE` → ejecuta un **Despacho Económico**
-     - `UC` → ejecuta un **Compromiso de Generación**
+     - `UC` → ejecuta un **Encendido de Generación**
      - `DCOPF` → ejecuta un **Flujo de Carga Óptimo Linealizado**
 
 </details>
