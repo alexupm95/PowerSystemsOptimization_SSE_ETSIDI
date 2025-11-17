@@ -68,7 +68,6 @@ elseif simulacion == "DCOPF"
         Clean_Terminal()
         println("AVISO: Para simular el flujo de potencia lineal, el sistema debe tener dos nodos o más.")
     end
-    
-
 end
+
 
