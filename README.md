@@ -171,16 +171,18 @@ This code uses the programming language Julia-JuMP and the HiGHS solver to solve
             #                    VARIABLES DE GENERACIÓN
             # =====================================================================
             # generador -------> Numero de identificación del generador
+            # nodo ------------> Número del nodo donde está conectado el generador 
             # minima_potencia -> Minima potencia generada (MW)
             # maxima_potencia -> Maxima potencia generada (MW)
             # coste -----------> Coste de generación (€/MW)
             function generadores()
                 generador = [1; 2; 3] 
+                nodo = [1; 2; 3]
                 minima_potencia = [10; 10; 10]
                 maxima_potencia = [150; 100; 50]
                 coste = [25; 15; 30]
             
-                return generador, minima_potencia, maxima_potencia, coste
+                return generador, nodo, minima_potencia, maxima_potencia, coste
             end
           ```
           
