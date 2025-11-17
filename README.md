@@ -129,7 +129,7 @@ This code uses the programming language Julia-JuMP and the HiGHS solver to solve
 <details>
   <summary>Click to see the details</summary>
   
-  1. To modify the input data, go to the folder 📁 [`Input_Data/`](./Input_Data), and open the subfolder associated with the system you want to modify (`2nodos` & `3nodos`):
+  1. To modify the input data, go to the folder 📁 [`Input_Data/`](./Input_Data), and open the subfolder associated to the system you want to modify (`2nodos` & `3nodos`):
        <p align="center">
         <figure style="display:inline-block; margin:10px;">
           <img src="./utils/_2bus.png" alt="2bus" width="25%">
@@ -141,11 +141,11 @@ This code uses the programming language Julia-JuMP and the HiGHS solver to solve
         </figure>
       </p> 
       
-  2. Then, double-click on the file named `dados_sistema.jl`
+  2. Then, double-click on the file named `datos_sistema.jl`
       
   3. **Example for the `3nodos` system:** 
      
-      - Go to the subfolder 📁 [`Input_Data/3nodos`](./Input_Data/3nodsos) and double click on the file [`Input_Data/3nodos/dados_sistema.jl`](./Input_Data/3nodsos/dados_sistema.jl)
+      - Go to the subfolder 📁 [`Input_Data/3nodos`](./Input_Data/3nodos) and double click on the file [`Input_Data/3nodos/datos_sistema.jl`](./Input_Data/3nodsos/datos_sistema.jl)
         
       - The variables that you can play with are:
         > ℹ️ Note: **All the input variables are saved in vectors. To separate two elements inside the vector, use semicolon (`;`).**
