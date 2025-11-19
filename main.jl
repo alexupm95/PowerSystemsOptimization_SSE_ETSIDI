@@ -3,7 +3,7 @@ carpeta_actual = pwd();
 #=
 CÓDIGO PARA RESOLVER EL FLUJO DE POTENCIA LINEAL (DC-OPF)
 
-Autores:    Alex Junior and Peng Wang
+Autor:      Alex Junior Da Cunha Coelho
 Supervisor: Luis Badesa Bernardo
 Afiliación: Universidad Politécnica de Madrid
 Novembre 2025
@@ -53,7 +53,7 @@ ED
 UC
 DCOPF
 =#
-simulacion = "ED"
+simulacion = "UC"
 
 if simulacion == "ED"
     Run_Economic_Dispatch(sistema, carpeta_actual)
@@ -69,5 +69,6 @@ elseif simulacion == "DCOPF"
         println("AVISO: Para simular el flujo de potencia lineal, el sistema debe tener dos nodos o más.")
     end
 end
+
 
 
