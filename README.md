@@ -78,7 +78,7 @@ This code uses the programming language Julia-JuMP and the HiGHS solver to solve
   3. Getting inside the folder [`Input_Data/`](./Input_Data):
      <details> <summary>See details</summary>
        
-      - Inside this folder, there are three subfolders, which are the data for the test cases available ([`2nodos`](./Input_Data/2nodos) & [`3nodos`](./Input_Data/3nodos))
+      - Inside this folder, there are three subfolders, which are the data for the test cases available ([`1nodo`](./Input_Data/1nodo), [`2nodos`](./Input_Data/2nodos) & [`3nodos`](./Input_Data/3nodos))
         <p align="center">
           <img src="./utils/Step9.png" alt="Step 9" width="50%">
         </p>
@@ -116,7 +116,7 @@ This code uses the programming language Julia-JuMP and the HiGHS solver to solve
         <p align="center">
           <img src="./utils/Step21.png" alt="Step 21" width="50%">
         </p>
-      - 📄 [`7_solucion_DE.txt`](./Results/7_solucion_DE.txt): It prints the results obtained via Unit Commitment
+      - 📄 [`7_solucion_UC.txt`](./Results/7_solucion_UC.txt): It prints the results obtained via Unit Commitment
         <p align="center">
           <img src="./utils/Step22.png" alt="Step 22" width="50%">
         </p>
