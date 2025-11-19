@@ -42,7 +42,8 @@ function lineas()
     de_nodo = [1]
     para_nodo = [2]
     susceptancia = [10]
-    maxima_potencia = [100]
+    maxima_potencia = [Inf]
 
     return linea, de_nodo, para_nodo, susceptancia, maxima_potencia
 end
+
